@@ -32,7 +32,6 @@ alias norphans="pacman -Qtdq | sudo pacman -Rns -"
 
 # git stuff:
 alias bare="/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-alias dotfiles="git@github.com:foobarni/dotfiles.git"
 
 PS1='\[\e[01;02;33m\]\u@\h \[\e[36m\][\W] \[\e[00;01;36m\]\$ \[\e[m\]'
 PS2='\[\e[01;02;33m\]> \[\e[m\]'
