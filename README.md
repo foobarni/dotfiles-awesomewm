@@ -1,49 +1,91 @@
 # Welcome to my ~/
 
-I have three main development branches in mind.
-Each will represent a desktop environment that can be deployed on a fresh Arch Linux install:
+*...in progress*
 
-#### 1. naked-env[^springrelease]
+Currently going through applications to sort them into their environments. My current configurations are temporarily
+stored in the `tweak` branch, unsorted.
 
-A bare-bone console configuration that sets environment variables, default applications
-and file associations, shell configurations, etc., installs utilities needed for a
-full desktop environment.
+### 1. TL;DR:
 
-The other branches will use this as a dependency to build a GUI on top of it.
+1. `install-packages.sh` to install additional packages on a base Arch Linux install;
+2. `deploy.sh` to deploy configurations and generate `.inventory`;
+3. `gather.sh` to gather the deployed configurations based on `.inventory`; e.g. when you made changes to them.
 
-#### 2. awesome-env[^springrelease]
+---
 
-If you choose the X path, this will additionally install and configure the X Display Server
-with AwesomeWM, and other GUI applications.
+Since my recent incident[^hard], I choose not to track my `.dotfiles` using the
+[bare and alias method](https://wiki.archlinux.org/title/Dotfiles) anymore. I find it cumbersome to see all of
+the config files in one place locally.
 
-[^springrelease]: Coming in late Spring.
+[^hard]: I wanted to reorganize the `--bare` repository so I can work on different environments in one place
+    and to deploy their configurations to my liking. Since the working directory was `$HOME`, 
+    I learned the difference between `git clean` and `git rm` the hard way.
 
-#### 3. hyprland-env[^endyear]
+I am implementing some safety measures to prevent future headaches and heart attacks:
 
-[^endyear]: Coming towards the end of this year.
+- The `dotfiles` are cloned in a directory, modified in this directory and *deployed* after modification.
+- The `deploy` script copies the dotfiles to `$HOME` and generates an `.inventory` list.
+- The `gather` script collects all the dotfiles tracked in the `.inventory`, ready to be pushed remotely.
+- Any risky manouvers are tested in virtual environments.
 
-If you choose the Wayland path, this will additionally install and configure Wayland with
-Hyprland, and other GUI applications.
+### 2. About
 
-Arbitrary branches you see:
+Assuming you only installed some [essential packages](https://wiki.archlinux.org/title/Installation_guide#Install_essential_packages)
+in the `pacstrap` step, such as the kernel, `base`, maybe an editor and a networking software, `install-packages.sh` will
+additionally install:
 
-- `common-ground` for configurations shared among the GUI environments.
-- `x230` those pesky additions that make the X230 Thinkpad buttons work.
+- `base-devel`, ...
+- Some command line tools:
+    - Terminal: `alacritty`;
+    - Editor: `vim`;
+    - File Manager: `lf` and additional dependencies for previews:
+        - `ctpv`, `atool`, `chafa`, `diff-so-fancy`, etc;
+    - A terminal browser: `w3m`;
+- Utilities such as: `udiskie`, `zip`, `unzip`, etc.
 
-For further details see `README.md` in each environment branch.
+It will also prompt you to install essential GUI applications (by default: `none`), depending on your environment
+of choice:
 
-### Installation
+- Awesome Window Manager:
+    - Display Server: X;
+    - Compositor: `picom`;
+    - etc;
+- Hyprland: (*...future plan*)
+    - Display Server: Wayland;
+    - etc.
+- Programs shared across environments:
+    - GUI browser: `firefox`;
+    - Audio servers;
+    - etc;
+- My day-to-day use applications, if confirmed at prompting:
+    - MuseScore, Steam, Discord, virtualization utilities;
+    - etc.;
 
-Clone the *environment branch* you wish to deploy:
+### 3. Installation:
+
+1. Clone this repository:
 
 ```
-git clone -b <chosen-env> https://github.com/foobarni/dotfiles.git
+git clone https://github.com/foobarni/dotfiles.git
 ```
 
-Change directory and run `install.sh`:
+2. Install essential and preferential packages using `install-packages.sh` (but give it executable permissions first,
+if needed).
+If you are using Bash shell:
 
 ```
-cd <chosen-env>
-chmod u+x install.sh
-./install.sh
+chmod +x install-packages.sh
+./install-packages.sh
 ```
+
+3. Deploy the configurations using `deploy-sh`:
+
+```
+chmod +x deploy.sh
+./deploy.sh
+```
+
+### 4. Additional Usage:
+
+1. Use `gather.sh` to collect your modified configurations.
+

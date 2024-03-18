@@ -1,6 +1,0 @@
-[env]
-TERM = "alacritty"
-decorations = "None"
-
-[font]
-size = 8.0
