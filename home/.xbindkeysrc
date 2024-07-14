@@ -1,0 +1,29 @@
+# Increase volume
+"pactl set-sink-volume @DEFAULT_SINK@ +2000"
+   XF86AudioRaiseVolume
+
+# Decrease volume
+"pactl set-sink-volume @DEFAULT_SINK@ -2000"
+   XF86AudioLowerVolume
+
+# Mute volume
+"pactl set-sink-mute @DEFAULT_SINK@ toggle"
+   XF86AudioMute
+
+# Mute microphone
+"pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+   XF86AudioMicMute
+
+#Backlight Up
+"brightnessctl set +10%"
+    XF86MonBrightnessUp
+
+#Backlight Down
+"brightnessctl set 10%-"
+    XF86MonBrightnessDown
+#Screenshots
+"screenshot window"
+    Control + Shift + 3
+
+"screenshot select"
+    Control + Shift + 4

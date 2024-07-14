@@ -1,0 +1,9 @@
+[env]
+TERM = "alacritty"
+decorations = "None"
+
+[font]
+size = 8.0
+
+[window]
+padding = { x = 2, y = 2}
