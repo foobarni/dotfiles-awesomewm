@@ -232,7 +232,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create the wibox
     s.mywibox = awful.wibar({ 
         position = "bottom",
-        border_width = 2,
+        -- border_width = 2,
         screen = s,
     })
 
@@ -510,6 +510,11 @@ awful.rules.rules = {
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
     },
+    -- Add the new Firefox rules here
+    { rule = { class = "firefox" },
+      properties = { border_width = 0 } },
+    { rule = { class = "Navigator" },
+      properties = { border_width = 0 } },
 
     -- Floating clients.
     { rule_any = {
