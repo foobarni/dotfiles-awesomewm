@@ -2,8 +2,7 @@
 
 *...in progress*
 
-Currently going through applications to sort them into their environments. My current configurations are temporarily
-stored in the `tweak` branch, unsorted.
+This repository contains my dotfiles of my AwesomeWM environment.
 
 ### 1. TL;DR:
 
@@ -14,8 +13,8 @@ stored in the `tweak` branch, unsorted.
 ---
 
 Since my recent incident[^hard], I choose not to track my `.dotfiles` using the
-[bare and alias method](https://wiki.archlinux.org/title/Dotfiles) anymore. I find it cumbersome to see all of
-the config files in one place locally.
+[bare and alias method](https://wiki.archlinux.org/title/Dotfiles) anymore. It is also not so evident which
+files I am trying to keep track of in my offline sessions.
 
 [^hard]: I wanted to reorganize the `--bare` repository so I can work on different environments in one place
     and to deploy their configurations to my liking. Since the working directory was `$HOME`, 
@@ -39,53 +38,10 @@ additionally install:
     - Terminal: `alacritty`;
     - Editor: `vim`;
     - File Manager: `lf` and additional dependencies for previews:
-        - `ctpv`, `atool`, `chafa`, `diff-so-fancy`, etc;
+        - `ctpv, atool, chafa, diff-so-fancy`, etc;
     - A terminal browser: `w3m`;
-- Utilities such as: `udiskie`, `zip`, `unzip`, etc.
+- Utilities such as: `udiskie, zip, unzip`, etc.
+- Some elementary programs for a GUI environment:
+    - X Display Server, picom, Firefox, Thunar, etc.
 
-It will also prompt you to install essential GUI applications (by default: `none`), depending on your environment
-of choice:
-
-- Awesome Window Manager:
-    - Display Server: X;
-    - Compositor: `picom`;
-    - etc;
-- Hyprland: (*...future plan*)
-    - Display Server: Wayland;
-    - etc.
-- Programs shared across environments:
-    - GUI browser: `firefox`;
-    - Audio servers;
-    - etc;
-- My day-to-day use applications, if confirmed at prompting:
-    - MuseScore, Steam, Discord, virtualization utilities;
-    - etc.;
-
-### 3. Installation:
-
-1. Clone this repository:
-
-```
-git clone https://github.com/foobarni/dotfiles.git
-```
-
-2. Install essential and preferential packages using `install-packages.sh` (but give it executable permissions first,
-if needed).
-If you are using Bash shell:
-
-```
-chmod +x install-packages.sh
-./install-packages.sh
-```
-
-3. Deploy the configurations using `deploy-sh`:
-
-```
-chmod +x deploy.sh
-./deploy.sh
-```
-
-### 4. Additional Usage:
-
-1. Use `gather.sh` to collect your modified configurations.
-
+The choice to optionally install some non-essential programs with the script is left to my future self.
