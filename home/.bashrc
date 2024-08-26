@@ -12,25 +12,12 @@ shopt -s cdspell # ignore typos in cd command
 export HISTSIZE= 
 export HISTFILESIZE= 
 export HISTCONTROL="erasedups:ignoreboth"
-#"incognito"
-alias incognito="set +o history" #temporarily disable
-alias nincognito="set -o history" #enable
 
 # Aliases
 
-alias ls='ls --color=auto --group-directories-first'
-alias grep='grep --color=auto'
-
-alias die='poweroff'
-
-# Privileges and auth
-alias idgod="sudo !!"
-alias jogsi="exec ssh-agent bash && ssh-add"
-
-# package management
-alias p="sudo pacman"
-alias orphans="pacman -Qtdq"
-alias norphans="pacman -Qtdq | sudo pacman -Rns -"
+if [ -f $HOME/.bash_aliases ]; then
+    . $HOME/.bash_aliases
+fi
 
 # Color sequence tag cheatsheet:
 # seq-start    seq-type    attributes    seq-end
@@ -53,29 +40,15 @@ PS1='\[\e[01;02;33m\]\u@\h \[\e[36m\][\W] \[\e[00;01;36m\]\$ \[\e[m\]'
 PS2='\[\e[01;02;33m\]> \[\e[m\]'
 
 # Source git files to...
-if [ -f git-completion.bash ]; then
-    . git-completion.bash
+if [ -f $HOME/.git-completion.bash ]; then
+    . $HOME/.git-completion.bash
 fi
 
-if [ -f git-prompt.sh ]; then
-    . git-prompt.sh
+if [ -f $HOME/.git-prompt.sh ]; then
+    . $HOME/.git-prompt.sh
 fi
 
 # print git branch folder: $(__git_ps1 " (%s)")
 if [ -n  "$(__git_ps1)"]; then
     PS1+='\[\e[01;37m\]$(__git_ps1 "(%s) ")\[\e[m\]'
 fi
-
-# ... auto-complete commands and define aliases:
-alias muti="git checkout"
-alias mizu="git status"
-alias huzd="git pull"
-alias lokd="git push"
-alias mehet="git commit -m"
-alias mizu="git status"
-alias nezd="git add"
-alias nenezd="git rm"
-
-# homework stuff
-source .azsp
-source .hw-aliases
