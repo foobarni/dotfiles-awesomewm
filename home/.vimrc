@@ -1,4 +1,5 @@
 :set relativenumber
+:set number
 :filetype plugin on
 :filetype indent on
 set expandtab "Indent stuff
