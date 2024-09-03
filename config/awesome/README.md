@@ -18,35 +18,26 @@ I am using `awesome-git v4.3` at the moment, following its respective documentat
 - `Super` + `Space`: open rofi in drun mode
 - `Control` + `Space`: keyboard layout toggle[^kbd]
 
-[^hotkeys]: Some are conflicting with awesome's *client layout toggle* bindings.
-    Since I'm only using two layouts and no titlebar, they don't cause trouble. But I'll patch this eventually.
-    I plan to remove the bindings I don't really use anyway.
+[^hotkeys]: Some are conflicting with Awesome's *client layout toggle* bindings.
+    Since I'm only using two layouts and no titlebars, it doesn't affect my setup. But I'll patch this eventually,
+    once I remove unused features.
 [^kbd]: Set using [X configuration files](https://wiki.archlinux.org/title/Xorg/Keyboard_configuration#Using_X_configuration_files)
 
 ---
 
 # Structure
 
-If, after stripping `rc.lua`, a managable number of lines will remain, the `main` folder won't happen.
+The planned structure is something similar, and any remaining bits will end up as some files in `modules/`.
 
-- `keys/`: modifiers, mouse button, global- and client specific bindings[^key];
-- `main/`: core code I rarely touch;
-- `ui-elements/`: menu, titlebar, wibar, theme, etc.;
-- `widgets/`: or "modules" appearing in the `ui-elements`.
-
-[^key]: Modifiers might not get a separate module.
+```
+├── modules
+│   ├── keybindings
+│   ├── themes
+│   ├── wibars
+│   └── widgets
+└── rc.lua
+```
 
 # Theme
 
-I am using the built-in *gtk theme* which is following the system's GTK theme.
-
----
-
-# Features
-
-I find some behaviors annoying, or expect them to happen, such as:
-
-- [ ] Close context menus when clicking outside of them or when pressing `Escape`;
-- [ ] Disable tag swithcing with the mouse wheel;
-- [ ] Spawn pop-up floating windows in the middle, and
-    - [ ] possibly tile them if, - for any reason -, more than one opens.
+I am using the built-in *zenburn theme* with tiny mods.
