@@ -1,5 +1,7 @@
 # About
 
+*...in progress*
+
 I am using `awesome-git v4.3` at the moment, following its respective documentation.
 `rc.lua` is being rewritten in a modular way (see `modularc.lua`), taking structural inspiration from
 [Epsi's step-by-step guide](https://epsi-rns.github.io/desktop/2019/06/15/awesome-overview.html),
