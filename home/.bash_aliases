@@ -30,3 +30,4 @@ alias mehet="git commit -m"
 alias mizu="git status"
 alias nezd="git add"
 alias nenezd="git rm"
+alias groot='cd "$(git rev-parse --show-toplevel)"'
