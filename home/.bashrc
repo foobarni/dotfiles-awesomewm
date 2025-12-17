@@ -49,7 +49,7 @@ if [ -f $HOME/.git-prompt.sh ]; then
 fi
 
 # print git branch folder: $(__git_ps1 " (%s)")
-if [ -n  "$(__git_ps1)"]; then
+if [ -n  "$(__git_ps1)" >2/dev/null ]; then
     PS1+='\[\e[01;37m\]$(__git_ps1 "(%s) ")\[\e[m\]'
 fi
 
