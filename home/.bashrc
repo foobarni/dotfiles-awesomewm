@@ -39,6 +39,13 @@ fi
 PS1='\[\e[01;02;33m\]\u@\h \[\e[36m\][\W] \[\e[00;01;36m\]\$ \[\e[m\]'
 PS2='\[\e[01;02;33m\]> \[\e[m\]'
 
+set_running_title() {
+    [[ $BASH_COMMAND == "$PROMPT_COMMAND" ]] && return
+    printf '\033]0;%s\007' "$BASH_COMMAND"
+}
+
+trap set_running_title DEBUG
+
 # Source git files to...
 if [ -f $HOME/.git-completion.bash ]; then
     . $HOME/.git-completion.bash
